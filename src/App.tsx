@@ -11,6 +11,11 @@ Amplify.Logger.LOG_LEVEL = 'VERBOSE;'
 
 Amplify.configure({
   Auth: {
+    // region: 'us-east-2',
+    // userPoolWebClientId: '60k24k7s5fkbcvnuefpm65lvq6',
+    // userPoolId: 'us-east-2_z2uNTF4Le',
+    // identityPoolId: 'us-east-2:710dfa3b-a9c3-489f-b927-8564ee85ab2f',
+    region: 'us-west-2',
     userPoolWebClientId: 'ji4tv7q81n7rbbmv1bkmkeb8i',
     userPoolId: 'us-west-2_UqKk6Qvs1',
     identityPoolId: 'us-west-2:ba429fe0-7865-4c71-8715-287b89ec7b5f',
@@ -29,6 +34,8 @@ Hub.listen('pubsub', (data: any) => {
 Amplify.addPluggable(
   new AWSIoTProvider({
     // clientId: 'SAUPTZ1GW-001E5E03552C' + Date.now(),
+    // aws_pubsub_region: 'us-east-2',
+    // aws_pubsub_endpoint: 'wss://a2y3ze4i03m03k-ats.iot.us-east-2.amazonaws.com/mqtt',
     aws_pubsub_region: 'us-west-2',
     aws_pubsub_endpoint: 'wss://asyh9zqgbddbc-ats.iot.us-west-2.amazonaws.com/mqtt',
   })
