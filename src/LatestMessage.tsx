@@ -1,20 +1,12 @@
 import React, { useState, useEffect, memo } from 'react';
-import { fetchAuthSession } from 'aws-amplify/auth';
-import { pubsub } from './utils/pubsub';
+import { PubSub } from 'aws-amplify';
 
 function LatestMessage() {
-    const [message, setMessage] = useState<string>('Hello World');
+    const [message] = useState<string>('Hello World');
+
     useEffect(() => {
-        console.log('Subscribing...');
-
-        fetchAuthSession().then((info) => {
-            console.log(info);
-        });
-
-        pubsub.subscribe({ topics: ['messages'] }).subscribe({
-            next: (data: any) => {
-                console.log(data);
-            },
+        PubSub.subscribe('myTopic').subscribe({
+            next: (data) => console.log('Message received', data),
             error: (error) => console.error(error),
             complete: () => console.log('Done')
         });
